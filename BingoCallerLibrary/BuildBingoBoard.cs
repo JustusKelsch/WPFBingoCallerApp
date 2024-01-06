@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace BingoCallerLibrary {
+
     public class BuildBingoBoard {
 
         public static List<string> FillInBingoSquares() {

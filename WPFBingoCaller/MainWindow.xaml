@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFBingoCaller"
         mc:Ignorable="d" FontSize="22"
-        Title="MainWindow" Height="950" Width="1100">
+        Title="BingoCaller" Height="1000" Width="1100">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -23,26 +23,64 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock x:Name="clearCardsTopListBox" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100" Text="{Binding}"/>
+        <TextBlock x:Name="clearCardsTopListBox" Foreground="Red" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100" Text="{Binding}"/>
 
-        <TextBlock Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40">Current Call</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="50">Current Call</TextBlock>
 
         <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" Margin="0 0 25 0">
-            <ListBox x:Name="bLeftColumnListBox" MinWidth="55" MinHeight="500" IsEnabled="False"/>
-            <ListBox x:Name="iLeftColumnListBox" MinWidth="55" MinHeight="500" IsEnabled="False"/>
-            <ListBox x:Name="nLeftColumnListBox" MinWidth="55" MinHeight="500" IsEnabled="False"/>
-            <ListBox x:Name="gLeftColumnListBox" MinWidth="55" MinHeight="500" IsEnabled="False"/>
-            <ListBox x:Name="oLeftColumnListBox" MinWidth="55" MinHeight="500" IsEnabled="False"/>
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center">B</TextBlock>
+                <ListBox x:Name="bLeftColumnListBox" MinWidth="55" MinHeight="505" Margin="0 0 5 0" IsEnabled="False"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center">I</TextBlock>
+                <ListBox x:Name="iLeftColumnListBox" MinWidth="55" MinHeight="505" Margin="0 0 5 0" IsEnabled="False"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center">N</TextBlock>
+                <ListBox x:Name="nLeftColumnListBox" MinWidth="55" MinHeight="505" Margin="0 0 5 0" IsEnabled="False"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center">G</TextBlock>
+                <ListBox x:Name="gLeftColumnListBox" MinWidth="55" MinHeight="505" Margin="0 0 5 0" IsEnabled="False"/>
+            </StackPanel>
+            
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center">O</TextBlock>
+                <ListBox x:Name="oLeftColumnListBox" MinWidth="55" MinHeight="505" IsEnabled="False"/>
+            </StackPanel>
         </StackPanel>
 
-        <TextBlock x:Name="currentCallText" Grid.Column="1" Grid.Row="2" Width="366" TextAlignment="Center" VerticalAlignment="Center" FontSize="200" Text="{Binding}"/>
+        <TextBlock x:Name="currentCallText" Foreground="Blue" Grid.Column="1" Grid.Row="2" Width="366" TextAlignment="Center" VerticalAlignment="Center" FontSize="200" Text="{Binding}"/>
 
         <StackPanel Orientation="Horizontal" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" Margin="25 0 0 0">
-            <ListBox x:Name="bRightColumnListBox" MinWidth="55" MinHeight="500" IsEnabled="False"/>
-            <ListBox x:Name="iRightColumnListBox" MinWidth="55" MinHeight="500" IsEnabled="False"/>
-            <ListBox x:Name="nRightColumnListBox" MinWidth="55" MinHeight="500" IsEnabled="False"/>
-            <ListBox x:Name="gRightColumnListBox" MinWidth="55" MinHeight="500" IsEnabled="False"/>
-            <ListBox x:Name="oRightColumnListBox" MinWidth="55" MinHeight="500" IsEnabled="False"/>
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center">B</TextBlock>
+                <ListBox x:Name="bRightColumnListBox" MinWidth="55" MinHeight="505" Margin="0 0 5 0" IsEnabled="False"/>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center">I</TextBlock>
+                <ListBox x:Name="iRightColumnListBox" MinWidth="55" MinHeight="505" Margin="0 0 5 0" IsEnabled="False"/>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center">N</TextBlock>
+                <ListBox x:Name="nRightColumnListBox" MinWidth="55" MinHeight="505" Margin="0 0 5 0" IsEnabled="False"/>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center">G</TextBlock>
+                <ListBox x:Name="gRightColumnListBox" MinWidth="55" MinHeight="505" Margin="0 0 5 0" IsEnabled="False"/>
+            </StackPanel>
+
+            <StackPanel>
+                <TextBlock HorizontalAlignment="Center">O</TextBlock>
+                <ListBox x:Name="oRightColumnListBox" MinWidth="55" MinHeight="505" IsEnabled="False"/>
+            </StackPanel>
         </StackPanel>
 
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center">
@@ -50,8 +88,7 @@
             <Button x:Name="newCardButton" Width="150" Height="35" Margin="5 25 0 0" Click="newCardButton_Click">New Card</Button>
         </StackPanel>
 
-
-        <TextBlock x:Name="clearCardsBottomText" Grid.Row="5" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100" Text="{Binding}"/>
+        <TextBlock x:Name="clearCardsBottomText" Foreground="Red" Grid.Row="5" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100" Text="{Binding}"/>
 
     </Grid>
 </Window>
