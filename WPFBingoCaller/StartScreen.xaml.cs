@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BingoCallerLibrary;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,16 +18,30 @@ namespace WPFBingoCaller
     /// <summary>
     /// Interaction logic for StartScreen.xaml
     /// </summary>
-    public partial class StartScreen : Window
-    {
+    public partial class StartScreen : Window, ISaveResults {
+
         public StartScreen()
         {
             InitializeComponent();
         }
 
+        public bool SaveResults() {
+
+            bool isSavingResults = true;
+
+            if (trackResultsCheckBox.IsChecked == false) {
+
+                isSavingResults = false;
+
+            }
+
+            return isSavingResults;
+            
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e) {
 
-            MainWindow mainWindow = new MainWindow();
+            MainWindow mainWindow = new MainWindow(this);
 
             this.Close();
             mainWindow.Show();

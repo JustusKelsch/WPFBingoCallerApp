@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFBingoCaller"
         mc:Ignorable="d" FontSize="22"
-        Title="BingoCaller" Height="1000" Width="1100">
+        Title="BingoCaller" Height="1050" Width="1100">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -87,6 +87,8 @@
             <Button x:Name="newCallButton" Width="150" Height="35" Margin="0 25 5 0" Click="newCallButton_Click">New Call</Button>
             <Button x:Name="newCardButton" Width="150" Height="35" Margin="5 25 0 0" Click="newCardButton_Click">New Card</Button>
         </StackPanel>
+
+        <Button x:Name="recordBingoButton" Grid.Column="1" Grid.Row="4" Width="150" Height="35" Margin="0 25 0 0" IsEnabled="False" Visibility="Collapsed" Command="{Binding Path=TrackResultsExecute}">Record Bingo</Button>
 
         <TextBlock x:Name="clearCardsBottomText" Foreground="Red" Grid.Row="5" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="100" Text="{Binding}"/>
 

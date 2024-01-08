@@ -1,4 +1,5 @@
 ﻿using BingoCallerLibrary;
+using System;
 using System.ComponentModel;
 using System.Text;
 using System.Windows;
@@ -24,8 +25,13 @@ namespace WPFBingoCaller {
         private BindingList<string> gColumn = new BindingList<string>();
         private BindingList<string> oColumn = new BindingList<string>();
 
-        public MainWindow() {
+        ISaveResults _parent;
+
+        public MainWindow(ISaveResults parent) {
             InitializeComponent();
+
+            _parent = parent;
+            TrackResultsExecute();
 
             AddBingoCallOptions();
         }
@@ -164,5 +170,17 @@ namespace WPFBingoCaller {
             clearCardsBottomText.Text = clearCardsTopListBox.Text = "Clear your cards";
 
         }
+
+        public void TrackResultsExecute() {
+
+            if (_parent.SaveResults()) {
+
+                recordBingoButton.IsEnabled = true;
+                recordBingoButton.Visibility = Visibility.Visible;
+
+            }
+
+        }
+
     }
 }
