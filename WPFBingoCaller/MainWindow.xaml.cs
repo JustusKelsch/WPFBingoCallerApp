@@ -182,6 +182,11 @@ namespace WPFBingoCaller {
                 recordBingoButton.Visibility = Visibility.Visible;
 
             }
+            else {
+
+                endGameButton.HorizontalAlignment = HorizontalAlignment.Center;
+
+            }
 
         }
 
@@ -190,6 +195,12 @@ namespace WPFBingoCaller {
             RecordWinners recordWinners = new RecordWinners();
 
             recordWinners.Show();
+
+        }
+
+        private void endGameButton_Click(object sender, RoutedEventArgs e) {
+
+            this.Close();
 
         }
     }

@@ -31,6 +31,7 @@ namespace WPFBingoCaller
         public RecordWinners()
         {
             InitializeComponent();
+
             winners.Add(new PersonModel {
                 Name = "<new>",
                 Wins = 0
