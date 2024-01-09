@@ -203,14 +203,21 @@ namespace WPFBingoCaller {
 
             RecordWinners recordWinners = new RecordWinners(this);
 
-            recordWinners.Show();
+            recordWinners.ShowDialog();
+
+            
 
         }
 
         private void endGameButton_Click(object sender, RoutedEventArgs e) {
 
-            // TODO: Add a form that lists the winners and how many bingos they recieved.
+            if (_parent.TrackResults()) {
 
+                EndResults endResults = new EndResults(this);
+
+                endResults.Show();
+
+            }
 
             this.Close();
 
@@ -255,7 +262,7 @@ namespace WPFBingoCaller {
 
         public ObservableCollection<PersonModel> GetAllWinners() {
 
-            return this.winners;
+            return winners;
 
         }
 

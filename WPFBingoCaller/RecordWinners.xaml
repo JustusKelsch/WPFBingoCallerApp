@@ -36,7 +36,10 @@
             <TextBox x:Name="winnerNameText" Height="25" Width="150" TextChanged="winnerNameText_TextChanged"/>
         </StackPanel>
 
-        <Button x:Name="saveWinnerButton" Grid.Column="1" Grid.Row="3" Height="25" Width="100" IsEnabled="False" Command="{Binding Path=CanSaveWinner}" Click="saveWinnerButton_Click">Save Winner</Button>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="3">
+            <Button x:Name="saveWinnerButton" Height="25" Width="100" Margin="0 0 5 0" IsEnabled="False" Command="{Binding Path=CanSaveWinner}" Click="saveWinnerButton_Click">Save Winner</Button>
+            <Button x:Name="closeRecordWinnersButton" Height="25" Width="100" Margin="5 0 0 0" Click="closeRecordWinnersButton_Click">Close</Button>
+        </StackPanel>
         
     </Grid>
 </Window>

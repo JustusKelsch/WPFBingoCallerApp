@@ -33,8 +33,7 @@ namespace WPFBingoCaller
 
             _parent = parent;
 
-
-            previousWinnersComboBox.SelectedItem = "<new>";
+            previousWinnersComboBox.SelectedIndex = 0;
 
             WireUpDictionary();
 
@@ -89,6 +88,7 @@ namespace WPFBingoCaller
             if (previousWinnersComboBox.SelectedIndex > 0) {
 
                 _parent.UpdateWins(_parent.GetPerson(previousWinnersComboBox.SelectedIndex));
+                previousWinnersComboBox.SelectedIndex = 0;
 
             }
             else if (_parent.ContainsPerson(model) == true) {
@@ -118,6 +118,12 @@ namespace WPFBingoCaller
 
             CanSaveWinner();
             CanAddWinner();
+
+        }
+
+        private void closeRecordWinnersButton_Click(object sender, RoutedEventArgs e) {
+
+            this.Close();
 
         }
     }

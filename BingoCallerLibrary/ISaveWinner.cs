@@ -15,7 +15,7 @@ namespace BingoCallerLibrary {
 
         public ObservableCollection<PersonModel> GetAllWinners();
 
-        public PersonModel GetPerson(int id);
+        public PersonModel GetPerson(int index);
 
     }
 }
