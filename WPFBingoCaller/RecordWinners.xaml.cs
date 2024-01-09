@@ -25,17 +25,16 @@ namespace WPFBingoCaller
     public partial class RecordWinners : Window
     {
 
-        //private BindingList<(string, int)> winners = new BindingList<(string name, int count)>();
-        ObservableCollection<PersonModel> winners = new ObservableCollection<PersonModel>();
+        ISaveWinner _parent;
 
-        public RecordWinners()
+        public RecordWinners(ISaveWinner parent)
         {
             InitializeComponent();
 
-            winners.Add(new PersonModel {
-                Name = "<new>",
-                Wins = 0
-            });
+            _parent = parent;
+
+
+            previousWinnersComboBox.SelectedItem = "<new>";
 
             WireUpDictionary();
 
@@ -74,54 +73,35 @@ namespace WPFBingoCaller
 
         private void WireUpDictionary() {
 
-            previousWinnersComboBox.ItemsSource = winners;
-
-        }
-
-        private bool ContainsName(string name) {
-
-            bool containsName = false;
-
-            foreach (PersonModel model in winners) {
-
-                if (model.Name == name) {
-
-                    containsName = true;
-
-                }
-
-            }
-
-            return containsName;
+            previousWinnersComboBox.ItemsSource = _parent.GetAllWinners();
 
         }
 
         private void saveWinnerButton_Click(object sender, RoutedEventArgs e) {
 
-            if (ContainsName(winnerNameText.Text) == false) {
+            PersonModel model = new PersonModel {
 
-                if (previousWinnersComboBox.SelectedIndex > 0) {
+                Name = winnerNameText.Text,
+                Wins = +1
 
-                    winners[previousWinnersComboBox.SelectedIndex].Wins++;
+            };
 
-                }
-                else {
+            if (previousWinnersComboBox.SelectedIndex > 0) {
 
-                    winners.Add(new PersonModel {
-                        Name = winnerNameText.Text,
-                        Wins = 1
-                    });
+                _parent.UpdateWins(_parent.GetPerson(previousWinnersComboBox.SelectedIndex));
 
-                }
+            }
+            else if (_parent.ContainsPerson(model) == true) {
 
-                previousWinnersComboBox.SelectedItem = "<new>";
-                winnerNameText.Clear();
+                MessageBox.Show("That name has already been used in the current session. Please enter a new name or select an existing name from the drop down.", "Name already taken.", MessageBoxButton.OK, MessageBoxImage.Error);
                 winnerNameText.Focus();
 
             }
             else {
 
-                MessageBox.Show("That name has already been used in the current session. Please enter a new name.", "Name already taken.", MessageBoxButton.OK, MessageBoxImage.Error);
+                _parent.SaveWinner(model);
+
+                winnerNameText.Clear();
                 winnerNameText.Focus();
 
             }

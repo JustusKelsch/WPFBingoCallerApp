@@ -1,5 +1,7 @@
 ﻿using BingoCallerLibrary;
+using BingoCallerLibrary.Models;
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using System.Windows;
@@ -17,7 +19,7 @@ namespace WPFBingoCaller {
     /// Interaction logic for MainWindow.xaml
     /// </summary>    
     
-    public partial class MainWindow : Window {
+    public partial class MainWindow : Window, ISaveWinner {
 
         private List<string> bingoCallOptions = new List<string>();
         private BindingList<string> bColumn = new BindingList<string>();
@@ -26,7 +28,7 @@ namespace WPFBingoCaller {
         private BindingList<string> gColumn = new BindingList<string>();
         private BindingList<string> oColumn = new BindingList<string>();
 
-        private Dictionary<string, int> winners = new Dictionary<string, int>();
+        ObservableCollection<PersonModel> winners = new ObservableCollection<PersonModel>();
 
         ITrackResults _parent;
 
@@ -35,6 +37,13 @@ namespace WPFBingoCaller {
 
             _parent = parent;
             TrackResultsExecute();
+
+            PersonModel person = new PersonModel {
+                Name = "<new>",
+                Wins = 0
+            };
+
+            SaveWinner(person);
 
             AddBingoCallOptions();
         }
@@ -192,7 +201,7 @@ namespace WPFBingoCaller {
 
         private void recordBingoButton_Click(object sender, RoutedEventArgs e) {
 
-            RecordWinners recordWinners = new RecordWinners();
+            RecordWinners recordWinners = new RecordWinners(this);
 
             recordWinners.Show();
 
@@ -202,8 +211,67 @@ namespace WPFBingoCaller {
 
             // TODO: Add a form that lists the winners and how many bingos they recieved.
 
+
             this.Close();
 
         }
+
+        public void SaveWinner(PersonModel person) {
+
+            winners.Add(person);
+
+        }
+
+        public void UpdateWins(PersonModel person) {
+
+            int index = 0;
+
+            if (person.Name != "<new>") {
+
+                index = winners.IndexOf(person);
+                winners[index].Wins++;
+
+            }
+
+        }
+
+        public bool ContainsPerson(PersonModel person) {
+
+            bool containsName = false;
+
+            foreach (PersonModel model in winners) {
+
+                if (model.Name == person.Name) {
+
+                    containsName = true;
+
+                }
+
+            }
+
+            return containsName;
+
+        }
+
+        public ObservableCollection<PersonModel> GetAllWinners() {
+
+            return this.winners;
+
+        }
+
+        public PersonModel GetPerson(int index) {
+
+            PersonModel output = new PersonModel();
+        
+            if (ContainsPerson(winners[index])) {
+
+                output = winners[index];
+
+            }
+
+            return output;
+        
+        }
+
     }
 }
