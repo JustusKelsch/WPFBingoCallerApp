@@ -200,6 +200,8 @@ namespace WPFBingoCaller {
 
         private void endGameButton_Click(object sender, RoutedEventArgs e) {
 
+            // TODO: Add a form that lists the winners and how many bingos they recieved.
+
             this.Close();
 
         }
