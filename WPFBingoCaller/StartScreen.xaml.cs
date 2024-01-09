@@ -18,14 +18,14 @@ namespace WPFBingoCaller
     /// <summary>
     /// Interaction logic for StartScreen.xaml
     /// </summary>
-    public partial class StartScreen : Window, ISaveResults {
+    public partial class StartScreen : Window, ITrackResults {
 
         public StartScreen()
         {
             InitializeComponent();
         }
 
-        public bool SaveResults() {
+        public bool TrackResults() {
 
             bool isSavingResults = true;
 
@@ -48,10 +48,5 @@ namespace WPFBingoCaller
 
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e) {
-
-            
-            
-        }
     }
 }

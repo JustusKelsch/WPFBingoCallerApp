@@ -15,7 +15,8 @@ using System.Windows.Shapes;
 namespace WPFBingoCaller {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    /// </summary>    
+    
     public partial class MainWindow : Window {
 
         private List<string> bingoCallOptions = new List<string>();
@@ -25,9 +26,11 @@ namespace WPFBingoCaller {
         private BindingList<string> gColumn = new BindingList<string>();
         private BindingList<string> oColumn = new BindingList<string>();
 
-        ISaveResults _parent;
+        private Dictionary<string, int> winners = new Dictionary<string, int>();
 
-        public MainWindow(ISaveResults parent) {
+        ITrackResults _parent;
+
+        public MainWindow(ITrackResults parent) {
             InitializeComponent();
 
             _parent = parent;
@@ -173,7 +176,7 @@ namespace WPFBingoCaller {
 
         public void TrackResultsExecute() {
 
-            if (_parent.SaveResults()) {
+            if (_parent.TrackResults()) {
 
                 recordBingoButton.IsEnabled = true;
                 recordBingoButton.Visibility = Visibility.Visible;
@@ -182,5 +185,12 @@ namespace WPFBingoCaller {
 
         }
 
+        private void recordBingoButton_Click(object sender, RoutedEventArgs e) {
+
+            RecordWinners recordWinners = new RecordWinners();
+
+            recordWinners.Show();
+
+        }
     }
 }

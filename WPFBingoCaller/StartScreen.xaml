@@ -24,7 +24,7 @@
 
         <TextBlock FontSize="100" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center">Bingo Caller</TextBlock>
 
-        <CheckBox x:Name="trackResultsCheckBox" Grid.Column="1" Grid.Row="2" Margin="25" IsChecked="True" Checked="CheckBox_Checked">Track Results</CheckBox>
+        <CheckBox x:Name="trackResultsCheckBox" Grid.Column="1" Grid.Row="2" Margin="25" IsChecked="True">Track Results</CheckBox>
 
         <Button Grid.Column="1" Grid.Row="3" Click="Button_Click">Start</Button>
         
