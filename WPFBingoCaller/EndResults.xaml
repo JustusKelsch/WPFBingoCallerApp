@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFBingoCaller"
         mc:Ignorable="d" FontSize="20"
-        Title="EndResults" Height="450" Width="300">
+        Title="EndResults" Height="450" Width="350">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -20,9 +20,9 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Column="1" Grid.Row="0" FontSize="30" Margin="25">Winners</TextBlock>
+        <TextBlock Grid.Column="1" Grid.Row="0" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="25">Winners</TextBlock>
 
-        <ListBox x:Name="winnersListBox" Grid.Column="1" Grid.Row="1" BorderThickness="0" IsEnabled="False">
+        <ListBox x:Name="winnersListBox" Grid.Column="1" Grid.Row="1" MaxWidth="300" BorderThickness="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
